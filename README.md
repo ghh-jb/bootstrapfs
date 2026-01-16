@@ -1,2 +1,23 @@
 # bootstrapfs
 APFS volume creator/strapper/mounter
+
+**DO NOT DELETE .DOPAMINE_ROOTFUL DIRECTORY, IT IS A FLAG THAT PARTITION IS NOT CORRUPTED**
+
+# Usage
+`makerwapfs create {path} {volName}`
+
+**path**: A directory, where you want to mount APFS partition with r/w.
+**volName**: Any string to identify the volume. This is needed to stay far away from entering path to disk device manually.
+
+# Safety tips
+(Accidents hurt, safety doesn't) 
+
+1. **UIcache**
+Especially important if you mount a partition over /Applications
+
+Do never install applications with same bundle identifiers in different places of the system. For example, if you have Filza installed via trollstore and then you copy Filza to /Applications, after running uicache -a you may (or may not?) corrupt your icon cache, after that SpringBoard will stop loading, crashing on startup and you will get a bootloop. 
+
+2. **More to be added??**
+
+# License
+GNU GENERAL PUBLIC LICENSE Version 3. See the `LICENSE` file.
