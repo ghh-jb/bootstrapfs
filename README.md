@@ -6,7 +6,7 @@ APFS volume creator/strapper/mounter
 # Usage
 `makerwapfs create {path} {volName}`
 
-**path**: A directory, where you want to mount APFS partition with r/w.
+**path**: A directory, where you want to mount APFS partition with r/w. <br>
 **volName**: Any string to identify the volume. This is needed to stay far away from entering path to disk device manually.
 
 # Safety tips
