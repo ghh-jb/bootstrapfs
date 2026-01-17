@@ -53,7 +53,8 @@ int mount_apfs(const char *dir, int flags, char *device) {
 
 // Utility function to create apfs devices
 int initialize_calls(void) {
-	void* APFSHandler = dlopen("/System/Library/PrivateFrameworks/APFS.framework/APFS", RTLD_NOW);
+	void* APFSHandler = dlopen("/System/Library/PrivateFrameworks/APFS.framework/APFS", RTLD_NOW); 
+	// TODO: maybe add MacOS support?
 	if (!APFSHandler) {
 		printf("[-] FAIL: unable to dlopen APFS, cannot continue\n");
 		dlclose(APFSHandler);
@@ -81,6 +82,7 @@ int initialize_calls(void) {
 // Utility function to get name of device
 // Pass only disk0s1s8 (without /dev)
 // For example: disk0s1s7 -> Preboot; /dev/disk0s1s1 -> System
+// Note: disk0s{} on iOS 15 and earlier and disk1{} on iOS 16 and MacOS
 char* getName(char* volume) {
 	if (!volume) {
 		debug("FAULT in volume name\n");
