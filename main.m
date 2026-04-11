@@ -220,7 +220,7 @@ int create_apfs_partition(char* path, char* volumeNameIn) {
             printf("[+] unmount ret %i\n", ret);
 
             ret = _APFSVolumeDelete(device);
-            printf("[+] volume %s deleted, creating\n", device);
+            printf("[+] volume %s deleted, recreating\n", device);
             goto start;
         }
 
@@ -244,7 +244,9 @@ int create_apfs_partition(char* path, char* volumeNameIn) {
         // 2. Copy all from real <path> to /var/mnt/<volumeNameIn>
         // 3. unmount /var/mnt/<volumeNameIn>
         // 4. mount over real <path>
-        printf("partition prepared for %s, unmounting tempdir\n", volumeNameIn);
+
+        // Do it right now
+        printf("Partition prepared for %s, unmounting tempdir\n", volumeNameIn);
         char tempMount[256] = "/var/mnt/";
         strcat(tempMount, volumeNameIn);
 
